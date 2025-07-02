@@ -129,8 +129,8 @@
   ]}
 {\endtcolorbox}
 
-\newenvironment{definicija}{\begin{defi}\begin{noticeB}}{%
-    \end{noticeB}\end{defi}}
+\newenvironment{definicija}{\begin{noticeB}\begin{defi}}{%
+    \end{defi}\end{noticeB}}
 
 {\theoremstyle{remark}
 \newtheorem*{opomba}{Opomba}
@@ -311,16 +311,16 @@ zato zveznost naravno formuliramo v metričnih prostorih.
 
 \begin{definicija}
   Preslikava $f: (X, d) \to (X', d')$ je zvezna v točki $a \in X$, če za $\forall \varepsilon > 0$ 
-  obstaja $\delta > 0$, da velja $d(x, x') < \delta \Rightarrow d'(f(x), f(a)) < \varepsilon$.
+  obstaja $\delta > 0$, da velja $d(x, a) < \delta \Rightarrow d'(f(x), f(a)) < \varepsilon$.
   Preslikava $f$ je zvezna, če je zvezna v vseh točkah.
 \end{definicija}
 
 Čeprav nam metrika omogoča, da preprosto obravnavamo bližino in zveznost, smo v geometriji in analizi 
 že spoznali tudi primere, ki se jih ne da povsem naravno opisati v jeziku metrike.
-Enostaven primer je na primer, ce vzamemo interval $[0, 1]$ (ponazorjen z daljico)
+Enostaven primer je na primer, če vzamemo interval $[0, 1]$ (ponazorjen z daljico)
 in njegovi krajišči skupaj zalepimo, da dobimo krožnico.
 Oba prostora sta metrična, vendar se metrike na krožnici ne da definirati tako, da bi izhajala iz metrike na intervalu.
-Nasprotno pa lahko odprte množice na krožnici z "`lepljenjem"' odprtih množic na intervalu.
+Nasprotno pa lahko odprte množice na krožnici dobimo z "`lepljenjem"' odprtih množic na intervalu.
 
 Nekateri osrednji pojmi iz analize niso metrične narave. Primer je konvergenca Taylorjeve vrste k limitni funkciji.
 Delne vsote vrste $\sin x = x - \frac{x^3}{6} + \frac{x^5}{120} - \dots$ so polinomi.
@@ -337,9 +337,9 @@ in ki se izkaže za naravno topologijo na prostoru zveznih funkcij.
   Naj bo $X$ množica. Topologija na $X$ je družina $\mathcal{T}$ podmnožic $X$,
   ki zadošča pogojem:
   \begin{enumerate}
-    \item $\emptyset, X \in \mathcal{T}$
-    \item poljubna unija elementov $\mathcal{T}$ je tudi element $\mathcal{T}$
-    \item končen presek elementov $\mathcal{T}$ je tudi element $\mathcal{T}$
+    \item $\emptyset, X \in \mathcal{T}$,
+    \item poljubna unija elementov $\mathcal{T}$ je tudi element $\mathcal{T}$ in 
+    \item končen presek elementov $\mathcal{T}$ je tudi element $\mathcal{T}$.
   \end{enumerate}
   Topološki prostor je par $(X, \mathcal{T})$. Elemente $\mathcal{T}$ imenujemo odprte množice. 
 \end{definicija}
@@ -360,12 +360,12 @@ in ki se izkaže za naravno topologijo na prostoru zveznih funkcij.
     Poraja se vprašanje, ali je topološki prostor $(\R, \mathcal{T})$ metrizabilen.
     Če sumimo, da bo odgovor negativen, moramo najti neko invariantno lastnost metričnih prostorov, ki ne velja za ta topološki prostor.
     V tem primeru bo to obstoj disjunktnih okolic v metričnih prostorih: če je $x \neq x'$ in $d(x, x') = r$,
-    potem sta okolici $K\left(x, \frac{r}{2}\right)$ in $K\left(x, \frac{r}{2}\right)$ disjunktni, v našem topološkem prostoru pa ni disjunktnih množic.
+    potem sta okolici $K\left(x, \frac{r}{2}\right)$ in $K\left(x', \frac{r}{2}\right)$ disjunktni, v našem topološkem prostoru pa ni disjunktnih odprtih množic.
 \end{zgled}
 
 \begin{zgled}
     $\mathcal{T} = \{\emptyset, X\}$ je topologija na $X$ in ji pravimo kar trivialna topologija.
-    Po drugi strani pa je tudi $\mathcal{T} = P(X)$ topologija na $X$ in ji pravimo diskretna metrika.
+    Po drugi strani pa je tudi $\mathcal{T} = P(X)$ topologija na $X$ in ji pravimo diskretna topologija.
     Trivialna topologija ni metrizabilna (če ima $X$ več kot eno točko), diskretna pa je zmeraj.
     Njena metrika je tako imenovana diskretna metrika $$d(x, x') = \begin{cases}
       0 ;& x = x'\\
@@ -377,7 +377,7 @@ in ki se izkaže za naravno topologijo na prostoru zveznih funkcij.
   Omenimo še dve opombi glede definicije topologije.
   \begin{itemize}
     \item Unija prazne družine je $\emptyset$, njen presek pa $X$,
-    zato je formalno gledano v definiciji topologiji dovolj zahtevati le točki $(1)$ in $(2)$.
+    zato je formalno gledano v definiciji topologiji dovolj zahtevati le točki $(2)$ in $(3)$.
     Topologija na $X$ je torej družina podmnožic $X$, ki je zaprta za poljubne unije in končne preseke.
     \item Zahtevo $(3)$ lahko nadomestimo s $(3')$: presek dveh elementov $\mathcal{T}$ je tudi element $\mathcal{T}$.
     Vendar pa moramo potem izrecno zahtevati $X \in \mathcal{T}$.
@@ -394,13 +394,13 @@ Pojave iz metričnih prostorov lahko prevedemo v topološki jezik.
     \midrule
     okolica                       & \makecell{krogla s središčem v $x$\\ ali množica, ki jo vsebuje}       & \makecell{$A \subseteq X$ je okolica $x$, če obstaja\\ $U \in \mathcal{T}$, da je $x \in U \subseteq A$.\\$U$ je okolica vsake svoje meje} \\         
     \midrule
-    $x$ je vsebovana točka $A$    & $A$ vsebuje neko okolico $x$                                           & enako\\
+    $x$ je notranja točka $A$    & $A$ vsebuje neko okolico $x$                                           & enako\\
     \midrule
     $x$ je mejna točka $A$        & vsaka okolica $x$ seka $A$ in $X \setminus A$                          & enako\\
     \midrule
-    notranjost $A$ ($\inte\, A$, $\overset{\circ}{A}$)    & vse notranje točke $A$                                                 & \makecell{največja odprta podmnožica\\ $A$ ali unija vseh elementov $\mathcal{T}$,\\vsebovan v $A$}\\
+    notranjost $A$ ($\inte\, A$, $\overset{\circ}{A}$)    & vse notranje točke $A$                                                 & \makecell{največja odprta podmnožica\\ $A$ ali unija vseh elementov $\mathcal{T}$,\\vsebovanih v $A$}\\
     \midrule
-    meja $A$ ($\fr \, A$)                     & vse mejne točke                                                        & $\overline{A} \setminus Int\; A$\\
+    meja $A$ ($\fr \, A$)                     & vse mejne točke                                                        & $\overline{A} \setminus \inte\, A$\\
     \midrule
     zaprtje $A$ ($\cl\, A$, $\overline{A}$)  & notranjost $A$ in meja $A$                                             & \makecell{najmanjša zaprta množica,\\ ki vsebuje $A$ ali presek vseh\\zaprtih množic, ki vsebujejo $A$}\\
     \midrule 
@@ -416,14 +416,14 @@ Pojave iz metričnih prostorov lahko prevedemo v topološki jezik.
     \midrule
     $x = \limzap{x_n}$            & \makecell{vsaka okolica $x$ vsebuje\\skoraj vse točke $\zap{x}$}                  & enako\\
     \midrule
-    $X$ je kompakten              & \makecell{vsako odprto pokritje prostora\\ ima končno podpokritje}     & vsako zaporedje ima stekališče\\
+    $X$ je kompakten              & vsako zaporedje ima stekališče     & \makecell{vsako odprto pokritje prostora\\ ima končno podpokritje} \\
     \bottomrule
   \end{tabular}
   \caption{Pojmi iz metričnih prostorov in njihovi "`prevodi"' v jezik topologije}
 \end{table}
 
 \begin{opomba}
-  Ista množica je lahko hkrati zaprta v enem prostoru in zaprta v drugem: primer je 
+  Ista množica je lahko hkrati odprta v enem prostoru in zaprta v drugem: primer je 
   recimo list papirja v ravnini $\R^2$ in v prostoru $\R^3$.
   Zato je odprtje in zaprtje množice $A$ bolje označiti kot $\inte_X \; A$ in $\cl_X \; A$, razen ko je prostor $X$ očiten.
 \end{opomba}
@@ -443,10 +443,10 @@ Tedaj pravimo, da smo topologijo podali z zaprtimi množicami.
 
 \begin{zgled}
   Kaj dobimo, če zahtevamo, da so točke zaprte? Potem so vse končne množice in $X$ zaprte.
-  To pa je dovolj, da vidimo, da množico, ki vsebuje $X$ in vse njegove končne podmnožice,
+  Tu pa je dovolj, da vidimo, da lahko množico, ki vsebuje $X$ in vse njegove končne podmnožice,
   razglasimo za $\mathcal{Z}$. Tako dobimo topologijo končnih komplementov
   $\mathcal{T}_{KK}$, ki vsebuje $X$ in vse njegove podmnožice, ki imajo končen komplement.
-  Če je $X$ končna, ima diskretno metriko, sicer pa ni metrizabilna.
+  Če je $X$ končna, ima diskretno topologijo, sicer pa ni metrizabilna.
 \end{zgled}
 
 \subsection{Zvezne preslikave}
@@ -469,7 +469,7 @@ To je (re)definicija zveznosti na način, ki ne omenja posameznih točk, temveč
     To seveda sledi iz načina, na katerega smo definirali zveznost na topoloških prostorih.
     \item Trivialna topologija: $f: (X, \mathcal{T}) \to (Y, \mathcal{T}_{\text{trivialna}})$ je vedno zvezna.
     \item Diskretna topologija: $f: (X, \mathcal{T}_{\text{diskretna}}) \to (Y, \mathcal{T})$ je vedno zvezna.
-    \item Konstantna funkcija: za $y \in Y$ je $\mathrm{const}_y : (X, \mathcal{T}) \to (Y, \mathcal{T}')$ je vedno (včasih edina) zvezna.
+    \item Konstantna funkcija: za $y \in Y$ je $\mathrm{const}_y : (X, \mathcal{T}) \to (Y, \mathcal{T}')$ vedno (včasih edina) zvezna.
     \item Identiteta: $\mathrm{Id}: (X, \mathcal{T}) \to (X, \mathcal{T'})$ je zvezna $\Leftrightarrow$ velja $\mathcal{T}' \subseteq \mathcal{T}$.
   \end{itemize}
 \end{zgled}
@@ -485,10 +485,10 @@ Dogovorimo se, da topološkemu prostoru rečemo kar  `prostor', zvezni preslikav
 \begin{izrek}[Karakterizacija zveznosti]
   Naslednje trditve so ekvivalentne:
   \begin{enumerate}
-    \item $f: (X, \mathcal{T}) \to (Y, \mathcal{T}')$ je zvezna
-    \item za vsak odprt $V \subseteq Y$ je $f^{-1} (V)$ odprt v $X$
-    \item za vsak zaprt $B \subseteq Y$ je $f^{-1} (B)$ zaprt v $X$
-    \item za vsak $A \subseteq X$ velja $f(\overline{A}) \subseteq \overline{(f(A))}$
+    \item $f: (X, \mathcal{T}) \to (Y, \mathcal{T}')$ je zvezna.
+    \item Za vsak odprt $V \subseteq Y$ je $f^{-1} (V)$ odprt v $X$.
+    \item Za vsak zaprt $B \subseteq Y$ je $f^{-1} (B)$ zaprt v $X$.
+    \item Za vsak $A \subseteq X$ velja $f(\overline{A}) \subseteq \overline{(f(A))}$.
   \end{enumerate}
 \end{izrek}
 
@@ -503,7 +503,7 @@ Dogovorimo se, da topološkemu prostoru rečemo kar  `prostor', zvezni preslikav
   in posledično $\overline{f^{-1} (B)} \subseteq f^{-1} (B)$. To pa je možno le, ko sta ti množici enaki, torej je $f^{-1} (B)$ zaprt.
 \end{dokaz}
 
-V metričnih prostorih je $f$ zvezna natanko tedaj, ko velja $\lim_{i \to \infty} f(x_i) = f\left( \lim_{i \to \inf} x_i\right)$.
+V metričnih prostorih je $f$ zvezna natanko tedaj, ko velja $\lim_{i \to \infty} f(x_i) = f\left( \lim_{i \to \infty} x_i\right)$.
 Primerjajmo to s formulacijo $f(\overline{A}) \subseteq \overline{f(A)}$.
 Ali lahko zveznost preslikav karakteriziramo z limitami tudi v topoloških prostorih?
 Odgovor je ne, saj če vzamemo množico $X$ s trivialno topologijo, so vse točke $X$ limite kateregakoli zaporedja.
@@ -524,7 +524,7 @@ $\mathcal{T}$ in $\mathcal{T}'$.
   in pravimo, da sta prostora homeomorfna.
 \end{definicija}
 
-Če naj bijektivna funkcija $f: X \to X'$ inducira bijekcijo med $\mathcal{T}$ in $\mathcal{T}'$, mora veljati dvoje:
+Če bijektivna funkcija $f: X \to X'$ inducira bijekcijo med $\mathcal{T}$ in $\mathcal{T}'$, mora veljati dvoje:
 za vsako odprto množico $U \in \mathcal{T}$ mora veljati $f(U) \in \topo{T}'$ in obratno, 
 za vsako odprto množico $V \in \topo{T}'$ mora biti $f^{-1} (V) \in \topo{T}$. 
 
@@ -543,19 +543,19 @@ za vsako odprto množico $V \in \topo{T}'$ mora biti $f^{-1} (V) \in \topo{T}$.
   zaprta, če velja $\stcomp{A} \in \mathcal{T} \Rightarrow \stcomp{f(A)} \in \mathcal{T}'$.
 \end{opomba}
 
-Če je $f$ bijektiven, potem je $f$ odprta natanko tedaj, ko je zaprta.
+Če je $f$ bijektivna, potem je $f$ odprta natanko tedaj, ko je zaprta.
 Če pa $f$ ni bijekcija, sta pojma različna. Protiprimer je recimo konstantna funkcija (ta je vedno zaprta, odprta pa le tedaj,
 ko slika v izolirano točko).
 
 \begin{zgled}
   V realni množici velja $[a, b] \approx [c, d]$ s homeomorfizmom $f(x) = \frac{d - c}{b - a}(x-a) + c$.
-  Ista formula velja za homeomorfizmi med odprtimi in polodprtimi intervali. Za homeomorfizem med $(-1, 1)$
+  Ista formula velja za homeomorfizem med odprtimi in polodprtimi intervali. Za homeomorfizem med $(-1, 1)$ in $\R$
   obstaja več možnosti, kot na primer $f(x) = \tan \left(\frac{\pi}{2} x\right)$ ali še bolje $f(x) = \frac{x}{1 - |x|}$.
 \end{zgled}
 
-Vsak interval na neskončni osi (vključno z neskončnimi) je homeomorfen enemu izmed intervalov 
+Vsak interval na realni osi (vključno z neskončnimi) je homeomorfen enemu izmed intervalov 
 $[-1, 1]$, $[-1, 1)$ ali $(-1, 1)$. Intervala $[-1, 1]$ in $(-1, 1)$ nista homeomorfna, saj bi zvezna preslikava 
-kompaktno množico (v $\R^n$ zaprt interval) preslika v nekompaktno množico (nezaprt interval). Enako seveda velja tudi 
+kompaktno množico (v $\R^n$ zaprt interval) preslikala v nekompaktno množico (nezaprt interval). Enako seveda velja tudi 
 za $[-1, 1]$ in $[-1, 1)$. Enostavno pa je preveriti tudi, da ne obstaja homeomorfizem $f$ med $[-1, 1)$ in $(-1, 1)$,
 če opazujemo točko $f(1) = a \in (-1, 1)$.
 
@@ -577,7 +577,7 @@ z inverzom $f(\vec{x}) = \frac{\vec{x}}{1 + |\vec{x}|}$. S kratkim premislekom p
 \end{trditev}
 
 Zdi se naravno, da če sferi $S^{n - 1}$ odstranimo eno samo točko, lahko njen "`plašč"' razprostremo na celoten prostor $\R^{n - 1}$.
-Dokažimo na primer, da je množica $S^{n - 1} \setminus \{(0, \dots, 0, 1)\}$ homeomorfna prostoru $\R^n$.
+Dokažimo na primer, da je množica $S^{n - 1} \setminus \{(0, \dots, 0, 1)\}$ homeomorfna prostoru $\R^{n-1}$.
 
 \begin{zgled}
   Oglejmo si primer $n = 2$. Tukaj lahko točke na enotski krožnici v ravnini $\R^2$ projiciramo
@@ -604,7 +604,7 @@ Prostorom, ki so lokalno homeomorfni kakemu evklidskemu prostoru, pravimo mnogot
   ni zaprta v $S^1$.
 \end{zgled}
 
-V konkretnih primerih ni težko pokazati, ali je dana preslikava homeomorfna.
+V konkretnih primerih ni težko pokazati, ali je dana preslikava homeomorfizem.
 Zaradi tega običajno ni težko za dva homeomorfna prostora pokazati, ali sta homeomorfna:
 dovolj je, če poiščemo eksplicitni homeomorfizem.
 Veliko težje je pokazati, da dana prostora nista homeomorfna. Pri tem imajo ključno vlogo topološke lastnosti.
@@ -666,7 +666,7 @@ zato je baza topologije analogna ogrodju vektorskega prostora.
 
 \begin{dokaz}
   Dokažimo drugo točko trditve in sicer trditvi v levo.
-  Naj bo $U \in \mathcal{X'}$ odprta množica, torej unija bazičnih množic.
+  Naj bo $U \in \mathcal{T'}$ odprta množica, torej unija bazičnih množic.
   Potem je $f^{-1} (U)$ enaka uniji praslik množic, torej je odprta.
   Odprtost preslikave je prav tako enostavno pokazati, saj slika $f$ ohranja unije.
 \end{dokaz}
@@ -732,7 +732,7 @@ unija elementov $\mathcal{B}$, kjer sta $B_\lambda, B_\mu \in \topo{B}$.
 \begin{zgled}
   Pokažemo lahko tudi, da projekcije v splošnem niso zaprte.
   Naj bosta $X = \R_+$, $Y = \R_+$ in označimo graf funkcije $f(x) = \frac{1}{x}$ z $\Gamma$.
-  Potem je $\Gamma$ zaprt v produktu, a $\mathrm{pr}_2 (\Gamma) = (0, +\infty)$ ni zaprt v $[0, +\infty)$.
+  Potem je $\Gamma$ zaprt v produktu, a $\mathrm{pr}_Y (\Gamma) = (0, +\infty)$ ni zaprt v $[0, +\infty)$.
 \end{zgled}
 
 Naj bo $\mathcal{P}$ neka družina podmnožic $X$.
@@ -745,7 +745,7 @@ je očitno zaprta za končne preseke, torej rabimo le še zahtevati, da je pokri
   Če je $\topo{P}$ pokritje za $X$, potem družina vseh končnih presekov množic iz $\mathcal{P}$
   ustreza pogojem za bazo topologije. Družina $\mathcal{T}$ vseh množic, ki jih lahko zapišemo kot unije končnih presekov
   iz $\topo{P}$, je najmanjša topologija na $X$, ki vsebuje vse množice $\topo{P}$.
-  Pravimo, da je $\topo{P}$ predbaza za topologijo $\topo{P}$.
+  Pravimo, da je $\topo{P}$ predbaza za topologijo $\topo{T}$.
 \end{definicija}
 
 \begin{trditev}
@@ -772,7 +772,7 @@ Iz prejšnje trditve pa dobimo tudi obrat.
 
 \begin{dokaz}
   Denimo, da so komponentne funkcije $f = (f_1, \dots, f_n)$ zvezne.
-  To pomeni, da je za poljubno podbazično množico oziroma pas $\mathrm{pr}_k ^{-1} (U)$ praslika $f^{-1} (\mathrm{pr}_k ^{-1} (U)) = f_k ^{-1} (U)$ odprta,
+  To pomeni, da je za poljubno predbazično množico oziroma pas $\mathrm{pr}_k ^{-1} (U)$ praslika $f^{-1} (\mathrm{pr}_k ^{-1} (U)) = f_k ^{-1} (U)$ odprta,
   torej je tudi $f$ zvezna.
 \end{dokaz}
 
@@ -783,7 +783,7 @@ Tako vzamemo kardinalnost baz je mera velikosti topologije.
 Če ima $\mathcal{T}$ končno bazo, je $\mathcal{T}$ končna.
 
 \begin{definicija}
-  Topološki prostor $(X, \mathcal{T})$ ustreza \textbf{1. aksiomu števnosti} (je "`$1$-števen"'),
+  Topološki prostor $(X, \mathcal{T})$ ustreza \textbf{1.~aksiomu števnosti} (je "`$1$-števen"'),
   če za vsak $x \in X$ obstaja števna lokalna baza okolic pri $x$.
 \end{definicija}
 
@@ -807,12 +807,12 @@ Očitno je, da je vsak metrični prostor $1$-števen, saj lahko za lokalno bazo 
 \end{dokaz}
 
 \begin{definicija}
-  Prostor zadošča \textbf{2. aksiomu števnosti} (je "`$2$-števen"'), če obstaja števna baza za njegovo topologijo.
+  Prostor zadošča \textbf{2.~aksiomu števnosti} (je "`$2$-števen"'), če obstaja števna baza za njegovo topologijo.
 \end{definicija}
 
 \begin{zgled}
   Če v $\R$ vzamemo družino vseh intervalov z racionalnimi krajišči, dobimo bazo njegove topologije, torej je $\R$ $2$-števen.
-  Podobno se prepričamo, da je tudi $\R^n$ $2$-števen prostor: za bazo lahko vzamemo produkte intervalov z racionalnimi krajišči. ali pa odprte krogle 
+  Podobno se prepričamo, da je tudi $\R^n$ $2$-števen prostor: za bazo lahko vzamemo produkte intervalov z racionalnimi krajišči ali pa odprte krogle 
   s polmerom $\frac{1}{n}$ in središčem v točkah z racionalnimi koordinatami.
 \end{zgled}
 
@@ -830,13 +830,13 @@ Ta je metričen (torej $1$-števen), vendar pa ni $2$-števen.
     \item Evklidski prostor $\R^n$ je separabilen, saj je $\Q^n$ gosta v $\R^n$.
     \item Če je prostor $2$-števen, potem števno povsod gosto podmnožico dobimo tako, da izberemo po eno točko iz vsake bazične okolice.
     \item Prostor funkcij $\topo{C} ([a, b])$ je separabilen. Weierstrassov izrek nam pove, da lahko vsako funkcijo na $[a, b]$ enakomerno aproksimiramo s polinomi.
-    Torej sopolinomi gosti v $\topo{C} ([a, b])$ z običajno metriko in zato so tudi polinomi z racionalnimi koeficienti gosto v istem prostoru.
+    Torej so polinomi gosti v $\topo{C} ([a, b])$ z običajno metriko in zato so tudi polinomi z racionalnimi koeficienti gosti v istem prostoru.
   \end{itemize}
 \end{zgled}
 
 \begin{zgled}
   V neskončnem prostoru $X$ s topologijo končnih komplementov je vsaka neskončna podmnožica 
-  $A \subseteq X$, saj je $X$ edina zaprta neskončna podmnožica in je torej lahko le $\overline{A} = X$.
+  $A \subseteq X$ gosta, saj je $X$ edina zaprta neskončna množica in je torej lahko le $\overline{A} = X$.
 \end{zgled}
 
 Očitno nam $2$-števnost implicira separabilnost, v metričnih prostorih pa sta ta pojma celo ekvivalentna.
@@ -855,13 +855,13 @@ Očitno nam $2$-števnost implicira separabilnost, v metričnih prostorih pa sta
   Če je množica $A$ števna, je števna tudi $\topo{B}$.
 \end{dokaz}
 
-V splošnem pa separabilnost (in celo hkrati separabilnost ter $1$-števnost) ne implicira $1$-števnosti.
+V splošnem pa separabilnost (in celo hkrati separabilnost ter $1$-števnost) ne implicira $2$-števnosti.
 
 \subsection{Podprostori}
 
 Poljubno podmnožico metričnega prostora lahko opremimo z metriko tako, da funkcijo razdalje preprosto zožimo na točke podmnožice.
 Podobno ravnamo pri topologijah. Naj bo $(X, \topo{T})$ topološki prostor.
-Za poljubno podmnožico $T_A = \{A \cap U\ |\ U \in \topo{T}\}$.
+Za poljubno podmnožico $A\subseteq X$ definiramo $\topo{T}_A = \{A \cap U\ |\ U \in \topo{T}\}$.
 Tej topologiji pravimo podedovana (ali inducirana) topologija, za prostor $(A, \topo{T}_A)$ pa,
 da je podprostor prostora $(X, \topo{T})$.
 
@@ -897,7 +897,7 @@ ki jo $B$ podeduje od topologije, ki jo je $A$ podedoval od $X$.
 \end{dokaz}
 
 \begin{trditev}
-  Naj bo $\mathcal{B}$ baza $\topo{T}$. Potem je $B_A = \{B \cap A\ |\ B \in \topo{B}\}$ baza $\topo{T}_A$.
+  Naj bo $\mathcal{B}$ baza $\topo{T}$. Potem je $\mathcal{B}_A = \{B \cap A\ |\ B \in \topo{B}\}$ baza $\topo{T}_A$.
   Če ima $(X, \topo{T})$ števno bazo, jo ima tudi $(A, \topo{T}_A)$.
 \end{trditev}
 
@@ -924,7 +924,7 @@ da ima $\topo{T}_A$ lastnost $L$ za vsak $A \subseteq X$.
 
 \begin{trditev}
   Naj bo $(X, \mathcal{T})$ in $(A, \mathcal{T}_A)$ njegov podprostor.
-  Potem za $B \subseteq A$ velja $\cl_A\, {B} = A \cap \cl_X \, B$, $\inte_A\, B\supseteq A \cap \inte_X \, B \subseteq$ 
+  Potem za $B \subseteq A$ velja $\cl_A\, {B} = A \cap \cl_X \, B$, $\inte_A\, B\supseteq A \cap \inte_X \, B$ 
   in $\fr_A \, B \subseteq A \cap \fr_X \, B$.
 \end{trditev}
 
@@ -970,7 +970,7 @@ Vsaka usklajena družina enolično določa funkcijo $f: X \to Y$, zanima pa nas 
     \item $\{[n, n+1]\ |\ n \in \Z\}$ je lokalno končno pokritje za $\R$.
     \item $\{(n, \infty)\ |\ n \in \Z\}$ je lokalno končno pokritje za $(1, \infty)$, 
     kljub temu, da se vsi členi medebojno sekajo.
-    \item Pokritje $\R$ s točkami ni lokalno končno, kljub temu, da so njeni členi disjunktni.
+    \item Pokritje $\R$ s točkami ni lokalno končno, kljub temu, da so njegovi členi disjunktni.
   \end{itemize}
 \end{zgled}
 
@@ -1049,7 +1049,7 @@ funkcijo $f: U \to \R^n$ velja, da je $f$ vložitev.
     \item Vsaka izometrija $f: (X, d) \to (X', d')$ je vložitev.
     \item Preslikava, ki odprti interval "`navije"' na osmico, ni vložitev.
     \item Eksponentna preslikava $g: (-\pi, \pi) \to \C$ je vložitev.
-    \item Za zaprto omejeno $A \subseteq R^n$ je vsaka preslikava $f: A \to \R^m$ zaprta,
+    \item Za zaprto omejeno $A \subseteq \R^n$ je vsaka preslikava $f: A \to \R^m$ zaprta,
     torej je vsaka injektivna zvezna preslikava iz $A$ v $\R^m$ vložitev.
   \end{itemize}
 \end{zgled}
@@ -1061,10 +1061,10 @@ Navedimo nekaj primerov.
 
 \begin{zgled}
   \textbf{Zaporedje ne more imeti več kot ene limite} (Hausdorffova lastnost).
-  Denimo, da smo v metričnem prostoru $(X, d)$. 
+  Denimo, da smo v metričnem prostoru $(X, d)$. +
   Če sta $a, b \in X$ in $a \neq b$ limiti zaporedja, potem se tako v vsakem odprtem krogu $K_1$ s središčem v $a$,
-  kot tudi v vsakem odprtem krogu $K_2$ s središčem v $b$ nahajajo skoraj vse členi našega zaporedja.
-  Če pa polmera krogov $K_1$ in $K_2$ strezno zamnjšamo, da sta disjunktna, pridemo v protislovje.
+  kot tudi v vsakem odprtem krogu $K_2$ s središčem v $b$ nahajajo skoraj vsi členi našega zaporedja.
+  Če pa polmera krogov $K_1$ in $K_2$ ustrezno zamnjšamo, da sta disjunktna, pridemo v protislovje.
 \end{zgled}
 
 \begin{zgled}
@@ -1091,7 +1091,7 @@ V tem poglavju bomo obravnavali tri sklope topoloških lastnosti: ločljivost, p
 
 \begin{definicija}
   Topologija $\topo{T}$ na množici $X$ loči disjunktni množici $A, B \subseteq X$, 
-  če obstajata množici $U, V \subseteq \topo{T}$, da je $A \subseteq U$,
+  če obstajata množici $U, V \in \topo{T}$, da je $A \subseteq U$,
   $B \cap U = \emptyset$ in $B \subseteq V$, $A \cap V = \emptyset$.
 \end{definicija}
 
@@ -1183,7 +1183,7 @@ Navedimo nekaj pomembnih lastnosti Hausdorffovih prostorov.
 
   $(\Leftarrow)$ Naj bo $x$ točka, ki je v zaprtju množice $A \subseteq X$ in naj bo 
   $U_1, U_2, \dots$ neka baza okolic za $x$. Tedaj za vsak $n$ lahko izberemo točko $x_n \in A \cap U_1 \cap \dots \cap U_n$.
-  Tako smo konstruirali zaporedje $(x_n)$, ki konvergira proti $x$ in so vsi $f(x_n) \in A$.
+  Tako smo konstruirali zaporedje $(x_n)$, ki konvergira proti $x$ in so vsi $f(x_n) \in f(A)$.
   Po predpostavki je $f(x) = f(\lim x_n) = \lim f(x_n) \in \overline{f(A)}$.
   To pa pomeni, da za poljuben $A \subseteq X$ velja $f(\overline{A}) \subseteq \overline{f(A)}$,
   torej je $f$ zvezna.
@@ -1235,13 +1235,13 @@ Takoj lahko vidimo, da normalnost implicira regularnost, ta implicira Hausdorffo
 ki pa nazadnje implicira Fréchetovo lastnost.
 Implikacij se ne da obrniti: denimo, da je $\topo{T}$ normalna.
 Če je $\topo{T} \subseteq \topo{T}'$, je tudi $\topo{T}'$ Hausdorffova,
-ni pa nujno regularna, ker imamo tudi nove zaprte množice, ki se jih ne da ostro ločiti od točk.
+ni pa nujno regularna, ker imamo tudi nove zaprte množice, ki se jih ne da nujno ostro ločiti od točk.
 
 \begin{zgled}
   Vzemimo evklidsko topologijo $\topo{T}$ na $\R$.
   Naj bo $\topo{T}'$ najmanjša topologija, ki vsebuje $\topo{T}$ in $\{\Q\}$.
   Baza za to topologijo je torej $\{(a, b), (a, b) \cap \Q\}$.
-  Potem je $\topo{T}'$ Hausdorffova, vendar pa ne moremo ostro ločiti točke $0$,
+  Potem je $\topo{T}'$ Hausdorffova, vendar pa ne moremo ostro ločiti točke $0$ od $\stcomp{\Q}$,
   saj je $\R$ edina odprta množica, ki vsebuje $\stcomp{\Q}$.
 \end{zgled}
 
@@ -1250,8 +1250,8 @@ ni pa nujno regularna, ker imamo tudi nove zaprte množice, ki se jih ne da ostr
 \end{izrek}
 
 \begin{dokaz}
-  Za disjunktni odprti množici $A, B \subseteq X$ definiramo $U = \{x \in X\ |\ d(A, x) < d(B, x)\}$
-  in $V = \{x \in X\ |\ d(A, x) > d(B, x) \}$. Očitno je $A \subseteq U$, $B \subseteq V$ in $A \cap B = \emptyset$,
+  Za disjunktni zaprti množici $A, B \subseteq X$ definiramo $U = \{x \in X\ |\ d(A, x) < d(B, x)\}$
+  in $V = \{x \in X\ |\ d(A, x) > d(B, x) \}$. Očitno je $A \subseteq U$, $B \subseteq V$ in $U \cap V = \emptyset$,
   dokazati moramo le še, da sta $U$ in $V$ res odprti. Za poljuben $x \in U$ definiramo $r = \frac{1}{2}(d(B, x) - d(A, x))$
   in potem je $K(x, r) \subseteq U$. Tako se lahko prepričamo, da sta $U$ in $V$ res odprti.
 \end{dokaz}
@@ -1264,7 +1264,7 @@ ni pa nujno regularna, ker imamo tudi nove zaprte množice, ki se jih ne da ostr
   Naj bo $A$ zaprt podprostor normalnega prostora $X$.
   Če sta $B$ in $C$ disjunktna zaprta podprostora v $A$, sta disjunktna 
   in zaprta tudi v $X$. Zaradi normalnosti obstajata odprti množici $U$ in $V$,
-  ki ostro ločita $A$ in $B$.
+  ki ostro ločita $B$ in $C$.
   Potem pa sta $U \cap A$ in $V \cap A$ v $A$ odprti množici, ki seveda ostro ločita $B$ in $C$.
 \end{dokaz}
 
@@ -1308,11 +1308,11 @@ oziroma multiplikativna lastnost, so komplicirani, kar nakazuje naslednji izrek.
   Različne stopnje ločljivosti je mogoče sistematično predstaviti kot zaporedje vedno ostrejših zahtev.
   Temu zaporedju pravimo aksiomi ločljivosti.
   \begin{itemize}
-    \item \textbf{$X$ je $T_0$}: Za različni točki $x,x' \in X$ obstaja okolica ene izmed teh dveh točk, ki jo loči od druge.
-    \item \textbf{$X$ je $T_1$}: Za različni točki $x,x' \in X$ obstaja okolica točke $x$, ki jo loči od $x'$ in okolica $x'$, ki jo loči od $x$.
-    \item \textbf{$X$ je $T_2$}: Za različni točki $x,x' \in X$ obstajata okolici, ki ostro ločita $x$ in $x'$.
-    \item \textbf{$X$ je $T_3$}: Za točko $x\in X$ in zaprto množico $A \subseteq X$, ki ne vsebuje $x$, obstajata okolici, ki ostro ločita $x$ in $A$.
-    \item \textbf{$X$ je $T_4$}: Za disjunktni zaprti množici $A; B \subseteq X$ obstajata okolici, ki ostro ločita $A$ in $B$.
+    \item $X$ je $T_0$: Za različni točki $x,x' \in X$ obstaja okolica ene izmed teh dveh točk, ki jo loči od druge.
+    \item $X$ je $T_1$: Za različni točki $x,x' \in X$ obstaja okolica točke $x$, ki jo loči od $x'$ in okolica $x'$, ki jo loči od $x$.
+    \item $X$ je $T_2$: Za različni točki $x,x' \in X$ obstajata okolici, ki ostro ločita $x$ in $x'$.
+    \item $X$ je $T_3$: Za točko $x\in X$ in zaprto množico $A \subseteq X$, ki ne vsebuje $x$, obstajata okolici, ki ostro ločita $x$ in $A$.
+    \item $X$ je $T_4$: Za disjunktni zaprti množici $A, B \subseteq X$ obstajata okolici, ki ostro ločita $A$ in $B$.
   \end{itemize}
 \end{definicija}
 
@@ -1328,7 +1328,7 @@ pa skupaj s $T_1$ da normalnost. Hitro vidimo, da veljata naslednji ekvivalenci.
 
 \begin{trditev}
   Prostor $X$ ima lastnost $T_4$ natanko tedaj, ko za vsako zaprto podmnožico $A \subseteq X$ in vsako 
-  odprto okolico $U$ za $A$ obstaja taka zaprta množica $V$, da velja $A \subseteq V \subseteq \overline{V} \subseteq U$.
+  odprto okolico $U$ za $A$ obstaja taka odprta množica $V$, da velja $A \subseteq V \subseteq \overline{V} \subseteq U$.
 \end{trditev}
 
 Iz trditve \ref{trd:1} pa takoj sledi naslednja trditev.
@@ -1351,7 +1351,7 @@ Iz trditve \ref{trd:1} pa takoj sledi naslednja trditev.
 \begin{definicija}
   Prostor $(X, \topo{T})$ je nepovezan, če ga lahko razcepimo kot disjunktno unijo dveh nepraznih, odprtih množic: 
   $X = U \cup V$, $U, V \in \topo{T} \setminus\{ \emptyset \}$ in $U \cap V = \emptyset$.
-  Obratno je $(X, \topo{T})$ nepovezan, če ni povezan.
+  Obratno je $(X, \topo{T})$ povezan, če ni nepovezan.
 \end{definicija}
 
 \begin{trditev}
@@ -1366,8 +1366,8 @@ Iz trditve \ref{trd:1} pa takoj sledi naslednja trditev.
 
 \begin{dokaz}
   Dokažimo ekvivalenco 1. in 4. točke.
-  Če obstaja razcep prostora $X$ na neprazni disjunktni odprti množici $X$ 
-  in $Y$, potem lahko definiramo $f$, ki slika $U$ v $0$ in $V$ v $1$.
+  Če obstaja razcep prostora $X$ na neprazni disjunktni odprti množici $U$ 
+  in $V$, potem lahko definiramo $f$, ki slika $U$ v $0$ in $V$ v $1$.
   Obratno: če obstaja taka zvezna surjekcija $f$, potem imamo razcep $X = f^{-1} (0) \cup f^{-1} (1)$, saj sta ti množici zaradi surjektivnosti neprazni.
 \end{dokaz}
 
@@ -1416,7 +1416,7 @@ Iz trditve \ref{trd:1} pa takoj sledi naslednja trditev.
   od koder sledi $f(\bigcup A_\lambda) = 0$.
   Pri drugi točki pa upoštevamo, da je produkt povezane množice z enojcem prav tako povezana množica.
   Oglejmo si dokaza tretje in četrte točke.
-  Denimo, da lahko poljubni točki v $X$ povežemo s potjo in naj bo $f: X \to \{0, 1\}$ zvezna surjektivna.
+  Denimo, da lahko poljubni točki v $X$ povežemo s potjo in naj bo $f: X \to \{0, 1\}$ zvezna surjekcija.
   Če potem pot $\gamma$ komponiramo z $f$, dobimo, 
   da obstaja zvezna surjektivna preslikava intervala $(0, 1)$
   v $\{0, 1\}$, kar vodi v protislovje. Nazadnje dokažimo še četrto točko.
@@ -1443,7 +1443,7 @@ Iz trditve \ref{trd:1} pa takoj sledi naslednja trditev.
 \begin{zgled}
   Oglejmo si gref $L \subseteq \R^2$ funkcije $f(x) = \sin \frac{\pi}{x}$ za $x \in [-1, 0).$
   Prostor $L$ je povezan, saj je homeomorfen intervalu $[-1, 0)$.
-  Zato je povezano tudi njegovo zaprtje $\overline{L} = L \cup (0 \times [-1, 1])$.
+  Zato je povezano tudi njegovo zaprtje $\overline{L} = L \cup (\{0\} \times [-1, 1])$.
   Vendar pa lahko pokažemo, da v $\overline{L}$ ni zvezne poti od točke $(-1, 0)$ do $(0, 0).$
   Ta množica (rečemo ji tudi Varšavski lok) nam pove, da povezanost ne implicira povezanosti s potmi.
 \end{zgled}
@@ -1470,6 +1470,7 @@ Povezanost s potmi seveda implicira povezanost. V nekaterih pomembnih primerih p
 \end{definicija}
 
 \begin{izrek}
+  ~ \vspace{-1em}
   \begin{itemize}
     \item Komponente tvorijo particijo prostora (torej razdelitev na disjunktne podprostore).
     \item Komponente $X$ so zaprti podprostori $X$.
@@ -1479,10 +1480,10 @@ Povezanost s potmi seveda implicira povezanost. V nekaterih pomembnih primerih p
 
 Zaprtost komponent sledi iz maksimalnosti: če je množica $A$ namreč povezana, je povezano tudi njeno zaprtje.
 Če ima $X$ končno mnogo komponent, potem so le-te tudi odprte (zato, ker je vsaka komponenta komplement unije ostalih komponent, končna unija zaprtih množic pa je zaprta).
-V splošnem pa komponente niso osprta, kar je jasno že iz primera $\Q$.
+V splošnem pa komponente niso odprte, kar je jasno že iz primera $\Q$.
 
 Za odprtost komponent mora vsak $x \in X$ imeti okolico $x \in U \subseteq C(x)$.
-Zadoščalo bi že, če ima vsak $x$ lokalno bazo iz povezanih okolic.
+Zadoščalo bi že, če ima vsak $x$ lokalno bazo iz povezanih množic.
 
 \begin{definicija}
   Prostor $(X, \mathcal{T})$ je lokalno povezan, če ima bazo okolic iz povezanih množic.
@@ -1511,11 +1512,11 @@ Večino do sedaj omenjenih trditev lahko ponovimo tudi za povezanost s potmi.
   Za $x \in X$ je $C'(x)$ unija vseh podmnožic $X$, ki so povezane s potmi in vsebujejo $x$.
 \end{definicija}
 
-Velja, da so unije s potmi povezanih podmnožic, ki imajo neprazen presek, je povezana s potmi.
+Velja, da so unije s potmi povezanih podmnožic, ki imajo neprazen presek, povezane s potmi.
 Tako so $C'(x)$ maksimalne s potmi povezane podmnožice $X$ oziroma potne komponente $X$.
 Podobno tudi potne komponente tvorijo particijo $X$ in za zvezno funkcijo $f: X \to Y$ je $f$-slika
 potne komponente $X$ povsem vsebovana v neki potni komponenti $Y$.
-Vendar pa je razlika v tem, da potne koordinate niso nujno zaprte -- protiprimer je ponovno varšavski lok.
+Vendar pa je razlika v tem, da potne komponente niso nujno zaprte -- protiprimer je ponovno varšavski lok.
 
 \begin{definicija}
   Prostor $(X, \topo{T})$ je lokalno povezan s potmi, če ima bazo iz odprtih množic, ki so povezane s potmi.
@@ -1529,7 +1530,7 @@ Vendar pa je razlika v tem, da potne koordinate niso nujno zaprte -- protiprimer
   Vzemimo $x \in X$. Vemo, da je $C'(x) \subseteq C(x)$, zato dokazujemo še inkluzijo v obratno smer.
   Zaradi lokalne povezanosti s potmi za vsak $y \in C'(x)$ obstaja odprta s potmi povezana okolica $U \ni y$,
   da je $U \subseteq C'(y) = C'(x)$, zato je $C'(x)$ odprta v $X$ in tudi v $C(x)$.
-  Obenem pa je $C'(x)$ komplement unije vseh ostalih potnih koordinat $C(x)$, ki so vse odprte, zato je $C'(x)$ tudi zaprta v $C(x)$.
+  Obenem pa je $C'(x)$ komplement unije vseh ostalih potnih komponent $C(x)$, ki so vse odprte, zato je $C'(x)$ tudi zaprta v $C(x)$.
   Ker je $C(x)$ povezana, mora biti $C'(x) = C(x)$.
 \end{dokaz}
 
@@ -1557,9 +1558,9 @@ da vsako pokritje $A$ z množicami, ki so odprte v $X$, premore končno podpokri
 \begin{zgled}
   Oglejmo si nekaj osnovnih zgledov kompaktnih prostorov.
   \begin{itemize}
-    \item Končni primeri so kompaktni.
+    \item Končni prostori so kompaktni.
     \item Če je $(x_n)_{n \in \N}$ konvergentno zaporedje in $\lim_{n \to \infty} x_n = a$,
-    potem je $\{x_1, x_2, \dots\} \cup \{a\}$ je kompakt.
+    potem je $\{x_1, x_2, \dots\} \cup \{a\}$ kompakt.
     \item Množica $\R$ ni kompaktna. V splošnem je v metričnih prostorih vsak kompakt omejen.
     \item Diskreten prostor je kompakten natanko tedaj, ko je končen.
   \end{itemize}
@@ -1581,10 +1582,10 @@ da vsako pokritje $A$ z množicami, ki so odprte v $X$, premore končno podpokri
 \end{izrek}
 
 \begin{dokaz}
-  Naj bo $f: X \to Y$ zvezna in $f(X)$ kompakt.
+  Naj bo $f: X \to Y$ zvezna in $X$ kompakt.
   Označimo neko odprto pokritje za $f(X)$ z $\mathcal{U}$.
   Potem je $f^{-1} (\mathcal{U})$ odprto pokritje za $X$ in posledično je 
-  $\{f^{-1} (U_\lambda), \dots, f^{-1} (U_{\lambda_n})\}$ pokritje za $X$,
+  $\{f^{-1} (U_{\lambda_1}), \dots, f^{-1} (U_{\lambda_n})\}$ pokritje za $X$,
   zato je $\{U_{\lambda_1}, \dots, U_{\lambda_n}\}$ pokritje za $f(X)$.
 \end{dokaz}
 
@@ -1594,8 +1595,8 @@ da vsako pokritje $A$ z množicami, ki so odprte v $X$, premore končno podpokri
 
 \begin{dokaz}
   Naj bo $\mathcal{U}$ pokritje $A$ z množicami, ki so odprte v $X$.
-  Naj bo $\mathcal{U} \cup \{\stcomp{A}\}$ je odprto pokritje $X$, zato obstaja končno podpokritje množic tega podpokritja,
-  ki je pokritje $A$ z elementi $\mathcal{U}$.
+  $\mathcal{U} \cup \{\stcomp{A}\}$ je odprto pokritje $X$, zato obstaja končno podpokritje tega pokritja,
+  ki je tudi pokritje $A$ z elementi $\mathcal{U}$.
 \end{dokaz}
 
 \begin{izrek}
@@ -1606,10 +1607,10 @@ da vsako pokritje $A$ z množicami, ki so odprte v $X$, premore končno podpokri
   Naj bo $\mathcal{U}$ pokritje $X \times Y$ z odprtimi škatlastimi okolicami.
   Vzemimo $x \in X$. Potem obstajajo take odprte množice $U_1 \times V_1, \dots, U_n \times V_n \in \mathcal{U}$,
   ki pokrivajo $\{x\} \times Y$ (ta množica je homeomorfna $Y$ in zato kompaktna).
-  Definiramo $U_x = U_1 \cup \dots \cup U_n \ni x$ kot odprto okolico $x$.
+  Definiramo $U_x = U_1 \cap \dots \cap U_n \ni x$ kot odprto okolico $x$.
   Torej ima $U_x \times Y$ odprto končno podpokritje z elementi $\mathcal{U}$.
   To naredimo za vse $x \in X$ in dobimo družimo odprtih množic $\{U_{x}\}_{x \in X}$.
-  Ker je $X$ kompaktna, imamo pokritje $\{U_{x_1}, \dots, U_{x_n}\}$ in sedaj je dokaz kompaktnosti na dlani.
+  Ker je $X$ kompaktna, imamo podpokritje $\{U_{x_1}, \dots, U_{x_n}\}$ in sedaj je dokaz kompaktnosti na dlani.
 \end{dokaz}
 
 Z indukcijo seveda dobimo, da je za kompakte $X_1, \dots, X_n$  tudi prostor $X_1 \times \dots \times X_n$ kompakten.
@@ -1625,8 +1626,8 @@ Velja pa še veliko več: celo poljuben produkt kompaktov je kompakten (izrek Ti
 \end{trditev}
 
 \begin{dokaz}
-  Za vsak $a \in K$ in $x \notin A$ obstajata odprti množici $U_a \ni a$ in $V_a \ni x$, da je $U_a \cap V_a = \emptyset$.
-  Ker družina množic $\{U_a\}$ pokriva $A$, obstaja podpokritje $U_{a_1} \cup \dots \cup U_{a_n} \supseteq K$.
+  Za vsak $a \in K$ in $x \notin K$ obstajata odprti množici $U_a \ni a$ in $V_a \ni x$, da je $U_a \cap V_a = \emptyset$.
+  Ker družina množic $\{U_a\}$ pokriva $K$, obstaja podpokritje $U_{a_1} \cup \dots \cup U_{a_n} \supseteq K$.
   Ta unija pa je disjunktna z množico $V_{a_1} \cap \dots \cap V_{a_n}$, ki je odprta okolica $x$.
   Dokazali smo še več: $T_2$ topologije ostro ločijo točke od kompaktov.
 \end{dokaz}
@@ -1645,7 +1646,7 @@ Velja pa še veliko več: celo poljuben produkt kompaktov je kompakten (izrek Ti
 
 \begin{dokaz}
   Naj bo $A \subseteq X$, kjer je $X$ kompakt in $A$ neskončna.
-  Denimo, da $A$ nima stekališč. Potem za vsak $x \in X$ obstaja $U_x$, ki vsebuje le končno mnogo 
+  Denimo, da $A$ nima stekališča. Potem za vsak $x \in X$ obstaja $U_x$, ki vsebuje le končno mnogo 
   točk iz $A$. Potem je $\{U_x\}$ odprto pokritje za $X$ in obstaja podpokritje $U_{x_1}, \dots, U_{x_n}$, ki pokrivajo $X$ in $A$ je končna.
   Ker je $A$ neskončna, ima stekališče.
 \end{dokaz}
@@ -1667,7 +1668,7 @@ Kompaktnost pa tudi okrepi nekatere druge topološke lastnosti.
   Ker Hausdorffov prostor loči kompakte od točk, za vsako točko $a \in A$ 
   obstajata odprti disjunktni množici $U_a \ni a$ in $V_a \supseteq B$.
   Ker je $\{U_a\}$ pokritje $A$, obstaja končno podpokritje $U_{a_1}, \dots, U_{a_n}$ in tako sta 
-  $U_{a_1} \cup \dots \cup U_{a_n} \supset A$ in $V_{a_1} \cap \dots \cap V_{a_n} \supseteq B$ odprti disjunktni množici, ki ločita $A$ in $B$.
+  $U_{a_1} \cup \dots \cup U_{a_n} \supseteq A$ in $V_{a_1} \cap \dots \cap V_{a_n} \supseteq B$ odprti disjunktni množici, ki ločita $A$ in $B$.
 \end{dokaz}
 
 \begin{izrek}
@@ -1711,7 +1712,7 @@ Ključni vmesni korak pa je naslednja trditev.
   Za začetek izberemo podpokritje $U_1, \dots, U_n$ pokritja $\mathcal{U}$.
   Ogledamo si $$f(x) = \max \{d(x, \stcomp{U_1}), \dots, d(x, \stcomp{U_n})\}.$$
   Takoj vidimo, da je $f$ zvezna, ker je maksimum zveznih funkcij, in pozitivna, saj je 
-  $U_1, \dots, U_n$ pokritje. Sedaj definiramo $\lambda = \min_{x \in K} f(x) > 0$.
+  $U_1, \dots, U_n$ pokritje. Sedaj definiramo $\lambda = \min_{x \in X} f(x) > 0$.
   Ta obstaja, saj je $X$ kompakt.
 \end{dokaz}
 
@@ -1741,7 +1742,7 @@ Definicija lokalne kompaktnosti se nekoliko razlikuje od običajnega opisa lokal
   Po predpostavki obstaja tak kompakt $K$, da je $x$ vsebovan v njegovi 
   notranjosti. Po enemu od prejšnjih izrekov je $K$ normalen, zato je množica $K \cap U$ regularna.
   Torej obstaja odprta množica $V$, da je $x \in V \subseteq \overline{V} \subseteq K \cap U$ in ker je 
-  $K$ kompakt, je $\overline{V}$ zaprta in zato prav tako kompaktna.
+  $K$ kompakt, $\overline{V}$ pa zaprta je zato prav tako kompaktna.
 \end{dokaz}
 
 \begin{izrek}
@@ -1776,18 +1777,18 @@ Lokalna kompaktnost je torej posplošitev polnosti.
 \end{izrek}
 
 \begin{dokaz}
-  Dokazati moramo, da nobeni odprta podmnožica $X$ ni vsebovana v $\bigcap_{i = 1} ^\infty F_i.$
+  Dokazati moramo, da nobena odprta podmnožica $X$ ni vsebovana v $\bigcup_{i = 1} ^\infty F_i.$
   Naj bo $U_0 \subseteq X$ odprta.
   Ker je $\inte\, F_1 = \emptyset$, $U_0$ ni podmnožica $F_1$, zato obstaja $x_1 \in U_0 \setminus F_1$.
-  Potem obstaja relativno kompaktna okolica $x \in U_1 \subseteq U_0$, ki ne seka $F_1$.
+  Potem obstaja relativno kompaktna okolica $x_1 \in U_1 \subseteq U_0$, ki ne seka $F_1$.
   Sedaj vzamemo $x_2 \in U_1 \setminus F_2$. Ponovno obstaja relativno kompaktna množica $U_2$, da je $\overline{U_2} \subseteq \overline{U_1}$.
-  To počnemo v neskončnost in dobimo množice $$\overline{U_1} \supset \overline{U_2} \supset \dots \bigcap \overline{U}_i \neq \emptyset,$$
-  torej obstaja $x \in U_0 \setminus \bigcup_1 ^\infty F_i$.
+  To počnemo v neskončnost in dobimo množice $$\overline{U_1} \supseteq \overline{U_2} \supseteq \cdots, \quad \bigcap \overline{U}_i \neq \emptyset,$$
+  torej obstaja $x \in U_0 \setminus \bigcup_{i=1}^\infty F_i$.
 \end{dokaz}
 
 \begin{izrek}
   Naj bodo $F_1, F_2, \dots$ zaprte s prazno notranjostjo v polnem metričnem prostoru $X$.
-  Potem ima tudi $F_1 \cup F_2 \cup \dots$ prazno notranjost v $X$.
+  Potem ima tudi $F_1 \cup F_2 \cup \cdots$ prazno notranjost v $X$.
 \end{izrek}
 
 \begin{zgled}
@@ -1799,8 +1800,8 @@ Lokalna kompaktnost je torej posplošitev polnosti.
   $$N_k = \left\lbrace f \in \mathcal{C} (I)\ \Big|\ \exists x \in [0, 1 - \frac{1}{k}],\ \forall h \in [0, \frac{1}{k}]:\ \left| \frac{f(x+h) - f(x)}{h} \right| \leq k \right\rbrace.$$
   Vsaka preslikava, ki je odvedljiva v vsaj eni točki, je vsebovana v nekem $N_k$, zato je dovolj utemeljiti, da je 
   $\mathcal{C}(I) \setminus \bigcup_k N_k \neq \emptyset.$ Vemo, da je $\mathcal{C} (I)$ poln metrični prostor glede na 
-  supremum metriko, zato je dovolj pokazati, da so množice $N_k$ zaprte in s prazno notranjostjo (to lahko pokažemo s preslikavo lomljenko).
-  Od tod po Bairu sledi, da nikjer odvedljive zvezne preslikaveobstajajo in so goste v prostoru vseh preslikav $\mathcal{C} (I)$.
+  supremum metriko, zato je dovolj pokazati, da so množice $N_k$ zaprte s prazno notranjostjo (to lahko pokažemo s preslikavo lomljenko).
+  Od tod po Bairu sledi, da nikjer odvedljive zvezne preslikave obstajajo in so goste v prostoru vseh preslikav $\mathcal{C} (I)$.
 \end{zgled}
 
 Včasih je koristno, če lahko dani prostor $X$ gledamo kot podprostor kompaktnega prostora.
@@ -1818,7 +1819,7 @@ Na $X^+ = X \cup \{\infty\}$ za odprte razglasimo množice, ki ne vsebujejo $\in
 ter množice, ki vsebujejo $\infty$ in katerih komplementi so kompaktni v $X$. Družino takih množic označimo s $\mathcal{T}$.
 
 \begin{izrek}
-  $(X^+, \mathcal{T})$ je kompakten prostor. Če $X$ ni kompakten, je inkluzija $i: X \hookrightarrow X^+$ kompaktifikacija, ki je pravimo 
+  $(X^+, \mathcal{T})$ je kompakten prostor. Če $X$ ni kompakten, je inkluzija $i: X \hookrightarrow X^+$ kompaktifikacija, ki ji pravimo 
   kompaktifikacija z eno točko ali kompaktifikacija Aleksandrova.
 \end{izrek}
 
@@ -1847,7 +1848,7 @@ točke, kompakti, zaprte množice ali kar cel $X$.
 Za vsako od teh izbir vzamemo minimalno topologijo, ki jih vsebuje (torej topologijo podamo s predbazo).
 
 \begin{trditev}
-  Naj bo $\topo{T}_p$ topologija na $C(X, Y)$, ki jo definira predbaza $\{\sprod{x}{U}\ |\ x \in X,\ U \leq Y\}$.
+  Naj bo $\topo{T}_p$ topologija na $C(X, Y)$, ki jo definira predbaza $\{\sprod{x}{U}\ |\ x \in X,\ U \subseteq Y\}$.
   Naj bo $f_1, f_2, \dots$ zaporedje funkcij v $C(X, Y)$. Tedaj družina funkcij $\{f_i\}$ 
   konvergira k $f$ v topologiji $\topo{T}_p$ natanko takrat, ko je $\lim_{i \to \infty} f_i (x) = f(x)$ za $\forall x \in X$.
 \end{trditev}
@@ -1858,11 +1859,11 @@ Za vsako od teh izbir vzamemo minimalno topologijo, ki jih vsebuje (torej topolo
 
 \begin{dokaz}
   Dokažimo trditev v levo $(\Leftarrow)$. Naj $\{f_i\}$ po točkah
-  konvergira k $f$ in naj bo $f$ vsebovana v neki bazni množici $\sprod{x_1}{U_1} \cap \dots \cap \sprod{x_n}{U_n}$.
+  konvergira k $f$ in naj bo $f$ vsebovana v neki bazni množici $\sprod{x_1}{U_1} \cap \dots \cap \sprod{x_k}{U_k}$.
   Potem velja $f(x_1) \in U_1$ in obstaja $N_1 \in \N$, da za $i > N_1$ velja $f_i (x_1) \in U_1$.
   Naprej: $f(x_2) \in U_2$ in obstaja $N_2 \in \N$, da je $N_2 > N_1$ in za $i > N_2 $ velja $f_i (x_2) \in U_2$.
   To nadaljujemo, dokler ne dobimo, da obstaja $N_k \in \N$, da je $N_k > \dots > N_2 > N_1$ in za $i > N_k$ velja $f_i (x_k) \in U_k$.
-  Torej imamo tako naravno število $N_k$, da za vsak $i > N_k$ velja $f_i \in \sprod{x_1}{U_1} \cap \dots \cap \sprod{x_n}{U_n}$.
+  Torej imamo tako naravno število $N_k$, da za vsak $i > N_k$ velja $f_i \in \sprod{x_1}{U_1} \cap \dots \cap \sprod{x_k}{U_k}$.
 \end{dokaz}
 
 \begin{opomba}
@@ -1870,7 +1871,7 @@ Za vsako od teh izbir vzamemo minimalno topologijo, ki jih vsebuje (torej topolo
   (oziroma je kot če bi bil prostor $X$ diskreten).
 \end{opomba}
 
-Naj bodo $A$ kompakti. Tedaj za podbazo vzamemo množico $$\{\sprod{K}{U}\ |\ K \subseteq X\ \mathrm{\text{kompaktna}},\ U \subseteq Y\ \mathrm{\text{odprta}}\}.$$
+Naj bodo $A$ kompakti. Tedaj za predbazo vzamemo množico $$\{\sprod{K}{U}\ |\ K \subseteq X\ \mathrm{\text{kompaktna}},\ U \subseteq Y\ \mathrm{\text{odprta}}\}.$$
 Tipična bazična množica je torej $\sprod{K_1}{U_1} \cap \dots \cap \sprod{K_n}{U_n}$.
 Omenimo še, da velja $\bigcap_{i = 1} ^n \sprod{K_i}{U} = \sprod{\bigcup_{i = 1} ^n K_i}{U}$ in 
 $\bigcap_{i = 1} ^n \sprod{K}{U_i} = \sprod{K}{\bigcap_{i = 1} ^n U_i}$.
@@ -1887,9 +1888,9 @@ Izkaže se, da za kompakten $X$ in metričen $Y$ ta topologija sovpada s topolog
   Najprej dokažimo, da je $\mathcal{B}$ res baza. Očitno je pokritje, zato predpostavimo, da velja 
   $g \in \langle f_1, K_1, \varepsilon_1 \rangle \cap \langle f_2, K_2, \varepsilon_2 \rangle$.
   Sedaj proglasimo $K = K_1 \cup K_2$ in 
-  $$\varepsilon = \min \{\varepsilon_1 - \max_{x \in K_1} d(f_1(x), g(x)),\ \varepsilon_2 - \max_{x \in K_2} f(f_2 (x), g(x))\}.$$
+  $$\varepsilon = \min \{\varepsilon_1 - \max_{x \in K_1} d(f_1(x), g(x)),\ \varepsilon_2 - \max_{x \in K_2} d(f_2 (x), g(x))\}.$$
   Potem velja $g \in \langle g, K, \varepsilon \rangle \subseteq \langle f_1, K_1, \varepsilon_1 \rangle \cap \langle f_2, K_2, \varepsilon_2 \rangle$.
-  Vemo, da velja $\mathcal{T}_{co} \subseteq \topo{T}_{ec}$, saj je za vsako podbazično množico $\sprod{K}{K(y, \varepsilon)} = \langle \mathrm{const}_y, K, \varepsilon \rangle$.
+  Vemo, da velja $\mathcal{T}_{co} \subseteq \topo{T}_{ec}$, saj je za vsako predbazično množico $\sprod{K}{K(y, \varepsilon)} = \langle \mathrm{const}_y, K, \varepsilon \rangle$.
   Dokažimo še v nasprotno smer ($\topo{T}_{ec} \subseteq \mathcal{T}_{co}$), torej da $\langle f, K, \varepsilon \rangle$ vsebuje neko okolico iz topologije $\topo{T}_{co}$.
   Definirajmo $U_c = \left\lbrace x \in K\ |\ d(f(x), f(c)) < \frac{\varepsilon}{2}\right\rbrace$ za $c \in K$.
   Potem $\{U_c\}$ tvorijo odprto pokritje $K$, zato obstajajo $U_{c_1},\dots, U_{c_n}$, ki so pokritje $K$.
@@ -1977,11 +1978,11 @@ Pri tem je $A = f^{-1} (0)$ in $B = f^{-1} (1)$, kar je močnejše kot za sploš
 Temu pravimo, da je $X$ popolnoma normalen.
 V obratni smeri pa lahko Urisonove funkcije uporabimo za konstrukcijo metrike.
 Če je $X$ normalen z neko bazo $\topo{B}$,
-potem za $x \neq x'$ v $X$ lahko najdemo $B, B' \subseteq \topo{B}$,
+potem za $x \neq x'$ v $X$ lahko najdemo $B, B' \in \topo{B}$,
 da je $x \in B \subseteq \overline{B} \subseteq B'$ in $x' \notin B'$.
 Za vsak tak par lahko izberemo Urisonovo funkcijo $f_{B, B'} : (X, \overline{B}, X \setminus B') \to (I, 0, 1)$,
 ki slika $x$ v $0$ in $x'$ v $1$.
-Če je $\mathcal{B}$ torej števna, potem obstaja števna družina funkcij v $C(X, [0, 1])$, ki loči točke $X$.
+Torej, če je $\mathcal{B}$ števna, potem obstaja števna družina funkcij v $C(X, [0, 1])$, ki loči točke $X$.
 
 \begin{izrek}
   Vsak normalen, $2$-števen prostor je metrizabilen.
@@ -2011,7 +2012,7 @@ ki slika $x$ v $0$ in $x'$ v $1$.
 
   Dokažimo še zveznost inverza $f^{-1} : f(X) \to X$.
   Naj bo $x \in X$ in naj bo $U$ poljubna okolica $x$.
-  Obstajata bazični okolici $B$ in $B'$, za kateri velja $x \in X \subseteq \overline{X} \subseteq X'$
+  Obstajata bazični okolici $B$ in $B'$, za kateri velja $x \in B \subseteq \overline{B} \subseteq B'$
   in naj bo $f_n$ Urisonova preslikava, prirejena paru $\overline{B},\ U \setminus B'$.
   Če za $y \in X$ velja $d(f(x), f(y)) < \frac{1}{n}$, potem iz definicije razdalje $d$ sledi 
   $|f_n (y)| < |f_n (x) - f_n (y)| < n d(f(x), f(y)) < 1$, torej je $y \in B' \subseteq U$.
@@ -2055,11 +2056,11 @@ Urisonova lema je v resnici zgolj zelo poseben primer Tietzejevega izreka.
 \begin{lema}
   Naj bo $A$ zaprta podmnožica normalnega prostora $X$ in $f: A \to [-c, c]$ zvezna.
   Potem obstaja zvezna $h: X \to \left[-\frac{c}{3}, \frac{c}{3}\right]$,
-  za katero je $|f(a) - h(a)| \leq \frac{2}{3} c$.
+  za katero je $|f(a) - h(a)| \leq \frac{2}{3} c$ za vse $a \in A$.
 \end{lema}
 
 \begin{dokaz}
-  Naj bo $A_+ = \left\lbrace a \in A\ |\ f(x) \geq \frac{c}{3}\right\rbrace$ in $A_- = \left\lbrace a \in A\ |\ f(x) \leq \frac{c}{3}\right\rbrace$. 
+  Naj bo $A_+ = \left\lbrace a \in A\ |\ f(x) \geq \frac{c}{3}\right\rbrace$ in $A_- = \left\lbrace a \in A\ |\ f(x) \leq -\frac{c}{3}\right\rbrace$. 
   Potem za $h$ vzamemo Urisonovo funkcijo $h: (X, A_{-}, A_+) \to \left([-\frac{c}{3}, \frac{c}{3}], -\frac{c}{3}, \frac{c}{3}\right)$.
 \end{dokaz}
 
@@ -2084,7 +2085,7 @@ temveč tudi za $\R^n$, saj lahko razširimo vsako komponento posebej.
   razširimo do preslikave, ki je definirana na celem $X$.
 \end{definicija}
 
-Očitno je produkt absolutnih ekstenzorjev.
+Očitno je produkt absolutnih ekstenzorjev absolutni ekstenzor.
 
 \begin{definicija}
   Podprostor $A \subseteq X$ je retrakt prostora $X$, če obstaja preslikava 
@@ -2115,13 +2116,13 @@ Torej je retrakt Hausdorffovega prostora vedno zaprt podprostor.
 \begin{definicija}
   Nosilec preslikave $f: X \to \R$ definiramo kot $\overline{f^{-1} (\R \setminus \{0\})}$.
   Potem pa je razčlenitev enote, podrejena nekemu pokritju $\{U_1, \dots, U_n\}$ prostora $X$,
-  je družina preslikav $\rho_i: X \to I$
+  družina preslikav $\rho_i: X \to I$
   za katere je nosilec $\rho_i$ vsebovan v $U_i$ za vsak $i = 1, \dots, n$ in velja 
   $\rho_1 (x) + \dots + \rho_n (x) = 1$ za vse $x \in X$.
 \end{definicija}
 
 \begin{izrek}
-  Za vsako odprto pokritev $\{U_1, \dots, U_n\}$ normalnega prostora $X$ 
+  Za vsako odprto pokritje $\{U_1, \dots, U_n\}$ normalnega prostora $X$ 
   obstaja neka podrejena razčlenitev enote.
 \end{izrek}
 
@@ -2199,7 +2200,7 @@ ki vse te funkcije vsebuje, tvorijo vsi izrazi oblike $p(f_{i_1}, \dots, f_{i_n}
 Pri dokazu si pomagamo z naslednjo oceno.
 
 \begin{lema}
-  Funkcijo $\varphi(t) = \sqrt{t}$ je na $[0, 1]$ enakomerna limita polinomov.
+  Funkcija $\varphi(t) = \sqrt{t}$ je na $[0, 1]$ enakomerna limita polinomov.
 \end{lema}
 
 \begin{dokaz}
@@ -2221,8 +2222,8 @@ Pri dokazu si pomagamo z naslednjo oceno.
   $$U_v = \{x \in K\ |\ h_{u, v} (x) < f(x) + \varepsilon\}.$$
   Ker je to odprta množica v $K$ in velja $v \in U_v \subseteq K$,
   je $\{U_v\ |\ v \in K\}$ odprto pokritje kompakta $K$.
-  Torej imamo končno podpokritje $U_{v_1}, \dots, U_{v_n}$ in sedaj definiramo 
-  $h_u (x) = \min \{h_{u, v_1} (x), \dots, h_{u, v_n} \}$.
+  Torej imamo končno podpokritje $U_{v_1}, \dots, U_{v_n}$. Definiramo 
+  $h_u (x) = \min \{h_{u, v_1} (x), \dots, h_{u, v_n} (x) \}$.
   Tako velja $h_u \in \overline{A}$, $h_u (x) < f(x) + \varepsilon$ za vse $x \in K$ 
   in $h_u (u) = f(u)$.
   Sedaj podobno definiramo še 
@@ -2240,9 +2241,9 @@ Pri dokazu si pomagamo z naslednjo oceno.
 \end{posledica}
 
 \begin{posledica}
-  Funkcije oblike $f(x) = a_0 + \sum_{k = 1} ^n a_k \cos (kx) + b_k \sin (kx)$ so goste v $C(-\pi, \pi)$.
+  Funkcije oblike $f(x) = a_0 + \sum_{k = 1} ^n a_k \cos (kx) + b_k \sin (kx)$ so goste v $C((-\pi, \pi))$.
   To je direktna posledica Stone-Weierstrassovega izreka, saj $\{\sin x, \cos x\}$ ločita točke na 
-  $[-\pi, \pi]$, zato so linearne kombinacije $\cos^{k} x$ in $\sin^k x$ goste v $C[-\pi, \pi]$.
+  $[-\pi, \pi]$, zato so linearne kombinacije $\cos^{k} x$ in $\sin^k x$ goste v $C([-\pi, \pi])$.
   Funkciji $\cos^k x$ in $\sin^k x$ pa sta tudi sami linearni kombinaciji funkcij $\sin(kx)$ in $\cos (kx)$.
 \end{posledica}
 
